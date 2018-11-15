@@ -1,0 +1,31 @@
+{
+    "map": {
+            "number_of_buoys": 10,
+            "data_per_buoy": 5,
+            "world_width": 500,
+            "world_height": 500,
+            "start_x": 0,
+            "start_y": 0,
+            "end_x": 30,
+            "end_y": 5.5,
+            "displacement": 1,
+            "show_points": 0
+    },
+    "model": {
+            "training": "valore"
+    },
+    "boat_features": {
+            "avg_speed": 3,
+            "fuel_consumption": 0.7,
+            "fuel_consumption_turning": 1.2,
+            "time_consumption_turning": 1.9
+    },
+
+    "weights": {
+            "fish": 1,
+            "straight_line_distance": 1,
+            "fuel": 1,
+            "area": 1,
+            "final_point_distance": 1
+    }
+}
