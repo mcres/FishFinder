@@ -1,0 +1,6 @@
+out/
+*.h5py
+*.npz
+*.csv
+.ipynb_checkpoints/
+*.pyc
