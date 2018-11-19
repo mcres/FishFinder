@@ -1,5 +1,3 @@
-## Description
-
 This project uses Machine Learning in order to compute the probabilities of a ship to find
 a shoal of fish given a specific trajectory. It uses artificially created data of buoys which are
 supposed to give the following data: ID of the own buoy, time (i.e. minutes, hours, day, month and year), temperature, position, velocity and detection or absence of a shoal of fish.
@@ -9,7 +7,7 @@ The goal is to predict a ship's best path given a starting and ending point, so 
 When the computations for this are finished, you can check your results in 'Results/date_and_time_when_you_run_the_script'. There will be a .png file showing three paths and a .txt file showing and comparing some of its characteristics.
 
 
-## How it works:
+How does it work:
 
 In order to train a DNN, we need data. In this case, the approach is to generate some artificial data for this purpose. We save this data into '/data_buoys.csv' so the user can check it any moment, and then feed it to our DNN so we can train it using Keras.
 Once trained, we need to define our algorithm to find the best path. That is the following:
@@ -19,12 +17,12 @@ Once trained, we need to define our algorithm to find the best path. That is the
 - Starting from the initial point, we give the boat the option to move to 5 different positions (forward, up, down, forward-up and forward-down) until it gets to the final point. Each of these points have a score given by the sum of their properties, each one multiplied by a specific weight.
 - For each path, we compute how much time and how many fuel it uses, as well as the average fishing probability predicted by the DNN.
 
-## How to use it:
+How to use it:
 
 It is quite simple.
 Go to the root directory of the repository with the command line and execute
 
-`$pip install -r requirements.txt` 
+$pip install -r requirements.txt
 
 When running the main script (FishFinder.py) from the terminal, we have three possible arguments:
 
