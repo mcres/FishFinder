@@ -44,9 +44,10 @@ def main():
 
     if "--train" in sys.argv or "--new" in sys.argv:
 
-        print ("Loading arrays from file")
 
-        try:
+
+        if os.path.isfile('data_arrays.npz'):
+            print ("Loading arrays from file")
             npzfile = np.load('data_arrays.npz')
 
             X_train, Y_train, X_test, Y_test = npzfile['arr_0'], npzfile['arr_1'], npzfile['arr_2'],npzfile['arr_3']
@@ -59,7 +60,7 @@ def main():
             model = neural_network_keras.create_model_api()
             neural_network_keras.train_model(X_train, Y_train, X_test, Y_test, model)
 
-        except:
+        else:
             print("No data found for training the DNN, run again the program with the argument --new")
 
     if "--showpath" in sys.argv:

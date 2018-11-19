@@ -60,7 +60,7 @@ def train_model(X_train, Y_train, X_test, Y_test, model):
     print("Test loss = ", loss)
 
     # save weights into a new filename
-    model.save_weights("model_weights.h5py")
+    model.save_weights('model_weights.h5py')
     print("model weights saved to /model_weights.h5py")
 
     return model
