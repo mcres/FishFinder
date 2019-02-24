@@ -4,4 +4,4 @@ out/
 *.csv
 .ipynb_checkpoints/
 *.pyc
-**/.vscode
+.vscode/
