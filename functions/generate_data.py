@@ -71,5 +71,8 @@ def generate_data(num_buoys, data_buoys, width_world, height_world):
 
 
 
+def return_parameters():
+    return len(fieldnames) - 1
+
 if __name__ == '__main__':
     generate_data(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4])
