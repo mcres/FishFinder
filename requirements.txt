@@ -4,3 +4,5 @@ keras==2.1.5
 tensorflow
 h5py==2.7.0
 jupyter==1.0.0
+pandas==0.24.1
+sklearn==0.20.2
