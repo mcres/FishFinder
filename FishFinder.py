@@ -1,6 +1,6 @@
-from functions.generate_data import generate_data
-from functions import world
-from functions import neural_network_keras
+from utils.generate_data import generate_data
+from utils import world
+from utils import neural_network_keras
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import os
