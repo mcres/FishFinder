@@ -4,8 +4,10 @@ import random
 import sys
 import os
 import datetime
+import pandas as pd
 
 #TODO make sure each year recieves an equal amount of data
+#TODO add timestamp to each csv file, and save them in /data
 
 def generate_data(num_buoys, data_buoys, width_world, height_world):
     """Generates data for our model, where
@@ -22,54 +24,58 @@ def generate_data(num_buoys, data_buoys, width_world, height_world):
     year_start = 2010
     year_range = 7
 
-    open('data_buoys.csv','w').close()    # creates file in root directory, not in functions
-    with open('data_buoys.csv', 'w') as csvfile:
-        fieldnames = ['ID', 'minute', 'hour', 'day', 'month', 'year', 'temperature',
-        'lat', 'lon', 'velocity', 'fish']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        while buoy <= num_buoys:
+    cols_order = ['ID','minute','hour','day','month','year','temperature','lat','lon','velocity','fish']
+    row_dict = {}
 
-            minute = round(random.random()*60)
-            hour = round(random.random()*24)
-            day = round(random.random()*30)
-            month = round(random.random()*12)
-            year = year_start + round(random.random()*year_range)
-            temp = round(random.random()*40)         #operating temperature between 0ºC and 40ºC
-            lat = round(random.random()*width_world)
-            lon = round(random.random()*height_world)
-            vel = round(random.random()*10)
-            fish = round(random.random())
+    # pandas DataFrame
+    df = pd.DataFrame()
 
-            writer.writerow({'ID': buoy, 'minute': int(minute), 'hour': int(hour),
-            'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
-            'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)})
+    while buoy <= num_buoys:
 
-            data += 1
-            if data == data_buoys:
-                buoy+=1
-                data = 0
+        minute = round(random.random()*60)
+        hour = round(random.random()*24)
+        day = round(random.random()*30)
+        month = round(random.random()*12)
+        year = year_start + round(random.random()*year_range)
+        temp = round(random.random()*40)         #operating temperature between 0ºC and 40ºC
+        lat = round(random.random()*width_world)
+        lon = round(random.random()*height_world)
+        vel = round(random.random()*10)
+        fish = round(random.random())
 
-        # write current data from buoys
-        for i in range(num_buoys):
-            buoy = i + 1
-            minute = now.minute
-            hour = now.hour
-            day = now.day
-            month = now.month
-            year = now.year
-            temp = round(random.random()*40)         #operating temperature between 0ºC and 40ºC
-            lat = round(random.random()*width_world)
-            lon = round(random.random()*height_world)
-            vel = round(random.random()*10)
-            fish = round(random.random())
+        row_dict = {'ID': buoy, 'minute': int(minute), 'hour': int(hour),
+        'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
+        'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
 
-            writer.writerow({'ID': buoy, 'minute': int(minute), 'hour': int(hour),
-            'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
-            'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)})
+        df = df.append(row_dict, ignore_index=True)
 
+        data += 1
+        if data == data_buoys:
+            buoy+=1
+            data = 0
 
+    # write current data from buoys
+    for i in range(num_buoys):
+        buoy = i + 1
+        minute = now.minute
+        hour = now.hour
+        day = now.day
+        month = now.month
+        year = now.year
+        temp = round(random.random()*40)         #operating temperature between 0ºC and 40ºC
+        lat = round(random.random()*width_world)
+        lon = round(random.random()*height_world)
+        vel = round(random.random()*10)
+        fish = round(random.random())
 
+        row_dict = {'ID': buoy, 'minute': int(minute), 'hour': int(hour),
+        'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
+        'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
+
+        df = df.append(row_dict, ignore_index=True)
+
+    df = df[cols_order]
+    df.to_csv('pandas_data.csv')
 
 if __name__ == '__main__':
     generate_data(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4])

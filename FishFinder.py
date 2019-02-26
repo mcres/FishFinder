@@ -22,7 +22,7 @@ def main():
         conf["map"]["world_width"], conf["map"]["world_height"])
 
         # Convert data in csv file into numpy arrays
-        filename = os.path.dirname(os.path.realpath(__file__)) + "/data_buoys.csv"
+        filename = os.path.dirname(os.path.realpath(__file__)) + "/pandas_data.csv"
 
         # Use pandas to handle csv file created
         df = pd.read_csv(filename)
