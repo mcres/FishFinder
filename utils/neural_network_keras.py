@@ -2,7 +2,7 @@ import os
 from keras.models import Model, Sequential
 from keras.layers import Input, Dense, Activation
 from keras.optimizers import SGD, Adam
-from functions import read_csv
+#from functions import read_csv
 import numpy as np
 
 def create_model_api():

@@ -1,7 +1,9 @@
-from functions.generate_data import generate_data
-from functions import read_csv
-from functions import world
-from functions import neural_network_keras
+
+from utils.generate_data import generate_data
+from utils import world
+from utils import neural_network_keras
+from sklearn.model_selection import train_test_split
+import pandas as pd
 import os
 import sys
 import numpy as np
@@ -21,8 +23,13 @@ def main():
         conf["map"]["world_width"], conf["map"]["world_height"])
 
         # Convert data in csv file into numpy arrays
-        filename = os.path.dirname(os.path.realpath(__file__)) + "/data_buoys.csv"
-        csv_list = read_csv.convert_csv(filename)
+
+        filename = os.path.dirname(os.path.realpath(__file__)) + "/pandas_data.csv"
+
+        # Use pandas to handle csv file created
+        df = pd.read_csv(filename)
+        features = df.iloc[:, :10]
+        labels = df.iloc[:, 10:]
 
         # Sets training and test data sets
         # 80% - 20% distribution
