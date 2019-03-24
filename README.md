@@ -24,15 +24,9 @@ Once trained, we need to define our algorithm to find the best path. That is the
 It is quite simple.
 Go to the root directory of the repository with the command line and execute
 
-`$pip install -r requirements.txt` 
+`$pip3 install -r requirements.txt` 
 
-When running the main script (FishFinder.py) from the terminal, we have three possible arguments:
-
-'--new'. This means we have any data we can train our DNN with, or we just simply want to make new data for any reason. Again, we can check this data in the '/data_buoys.csv' file.
-
-'--train'. For training the neural network. Make sure you have previously made new data for training.
-
-'--showpath'. This computes the paths to follow, creating the .jpn and .txt files I mentioned before.
+Jupyter Notebook and demo.py should give an idea of how to use this package.
 
 As there's no GUI at the moment, we can configure some parameters in the '/conf.json' file.
 

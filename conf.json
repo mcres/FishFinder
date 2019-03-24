@@ -6,8 +6,8 @@
             "world_height": 500,
             "start_x": 0,
             "start_y": 0,
-            "end_x": 30,
-            "end_y": 5.5,
+            "end_x": 20,
+            "end_y": 20,
             "displacement": 1,
             "show_points": 0
     },
