@@ -6,8 +6,9 @@ import os
 import datetime
 import pandas as pd
 
-#TODO make sure each year recieves an equal amount of data
-#TODO add timestamp to each csv file, and save them in /data
+# TODO make sure each year recieves an equal amount of data
+# TODO add timestamp to each csv file, and save them in /data
+
 
 class DataGenerator():
 
@@ -20,7 +21,8 @@ class DataGenerator():
         self.year_start = year
         self.year_range = year_range
 
-        self.cols_order = ['ID','minute','hour','day','month','year','temperature','lat','lon','velocity','fish']
+        self.cols_order = ['ID', 'minute', 'hour', 'day', 'month',
+                           'year', 'temperature', 'lat', 'lon', 'velocity', 'fish']
         self.row_dict = {}
         self.save_to_csv = save_to_csv
         self.df = pd.DataFrame()
@@ -30,13 +32,12 @@ class DataGenerator():
         self.width_world = conf["map"]["world_width"]
         self.height_world = conf["map"]["world_height"]
 
-
     def generate_data(self):
         """Generates data for our model, where
         num_buoys are the number of buoys on the system,
         data_buoys are the number of entries per buoy,
         and width_world and height_world are the dimensions of the surface
-        where both the buoys and the ships are supposed to be"""        
+        where both the buoys and the ships are supposed to be"""
 
         while self.buoy <= self.num_buoys:
 
@@ -45,22 +46,22 @@ class DataGenerator():
             day = round(random.random()*30)
             month = round(random.random()*12)
             year = self.year_start + round(random.random()*self.year_range)
-            #operating temperature between 0ºC and 40ºC
-            temp = round(random.random()*40)         
+            # operating temperature between 0ºC and 40ºC
+            temp = round(random.random()*40)
             lat = round(random.random()*self.width_world)
             lon = round(random.random()*self.height_world)
             vel = round(random.random()*10)
             fish = round(random.random())
 
             self.row_dict = {'ID': self.buoy, 'minute': int(minute), 'hour': int(hour),
-            'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
-            'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
+                             'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
+                             'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
 
             self.df = self.df.append(self.row_dict, ignore_index=True)
 
             self.data += 1
             if self.data == self.data_buoys:
-                self.buoy+=1
+                self.buoy += 1
                 self.data = 0
 
         # write current data from buoys
@@ -71,15 +72,15 @@ class DataGenerator():
             day = self.now.day
             month = self.now.month
             year = self.now.year
-            temp = round(random.random()*40)         
+            temp = round(random.random()*40)
             lat = round(random.random()*self.width_world)
             lon = round(random.random()*self.height_world)
             vel = round(random.random()*10)
             fish = round(random.random())
 
             self.row_dict = {'ID': buoy, 'minute': int(minute), 'hour': int(hour),
-            'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
-            'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
+                             'day': int(day), 'month': int(month), 'year': int(year), 'temperature': int(temp),
+                             'lat': int(lat), 'lon': int(lon), 'velocity': int(vel), 'fish': int(fish)}
 
             self.df = self.df.append(self.row_dict, ignore_index=True)
 
