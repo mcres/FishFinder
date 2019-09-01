@@ -11,7 +11,7 @@ When the computations for this are finished, you can check your results in 'Resu
 
 ## How it works:
 
-In order to train a DNN, we need data. In this case, the approach is to generate some artificial data for this purpose. We save this data into '/data_buoys.csv' so the user can check it any moment, and then feed it to our DNN so we can train it using Keras.
+In order to train a DNN, we need data. In this case, the approach is to generate some artificial data for this purpose. We save this data into '/data_buoys.csv' so the user can check it at any moment, and then feed it into our DNN so we can train it using Keras.
 Once trained, we need to define our algorithm to find the best path. That is the following:
 
 - We suppose that our world (sizes previously given by the user) is made up only by water (no islands or whatever). Inside this world we define a line going from the initial point to the final point of the boat. That's the main line. Then we define a perpendicular line which is only 20% large. We can then form a rectangle that we divide into a lot of points. It helps to check the .png file I mentioned before to understand this.
@@ -31,7 +31,7 @@ Jupyter Notebook and demo.py should give an idea of how to use this package.
 As there's no GUI at the moment, we can configure some parameters in the '/conf.json' file.
 
 "map"
-  - "number_of_buoys": we'll feed our DNN with the data collected by 'number_of_buoys' buoys
+  - "number_of_buoys": we'll feed our DNN with the data collected by 'number_of_buoys' buoys.
   - "data_per_buoy": how many time, temperature, position, velocity and fish detection series of data will be provided by each buoy. The program makes sure that one of this series of data is updated (that is, 'fresh' data).
   - Our world's size is defined by "world_width" and "world_height".
   - Likewise, initial and final points will be defined by "start_x", "start_y", "end_x" and "end_y", respectively.
@@ -46,7 +46,7 @@ As there's no GUI at the moment, we can configure some parameters in the '/conf.
 
 "weights"
   - "fish": the higher, the more probable it will pass by points with high fishing probabilities.
-  - "straight_line_distance": the higher, the more probable it won't go very far from the main line (that is, the line connecting the starting and final points).
+  - "straight_line_distance": the higher, the more probable it won't go very far from the main line (that is, the line connecting the              starting and final points).
   - "fuel": the higher, the more probable the path will spend less fuel.
   - "area": the higher, the more probable it will pass by areas with high fishing probabilities.
   - "final_point_distance": this assures us that the path will converge into the final point that we want to go to.
