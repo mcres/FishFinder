@@ -1,5 +1,5 @@
 matplotlib==3.0.1
-numpy==1.13.3
+numpy==1.22.0
 keras==2.1.5
 tensorflow
 h5py==2.7.0
